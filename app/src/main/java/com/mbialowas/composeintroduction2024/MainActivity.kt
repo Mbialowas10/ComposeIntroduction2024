@@ -10,6 +10,10 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.mbialowas.composeintroduction2024.ui.theme.ComposeIntroduction2024Theme
@@ -30,7 +34,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Counter(modifier: Modifier){
-    var counter: Int = 0
+
+    //var counter: Int = 0
+    var counter by remember{
+        mutableStateOf(10)
+    }
 
     Button(
         onClick = {
