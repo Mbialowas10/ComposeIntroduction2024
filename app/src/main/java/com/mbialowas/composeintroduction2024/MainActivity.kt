@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,10 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposeIntroduction2024Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    Counter(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -31,17 +29,14 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun Counter(modifier: Modifier){
+    var counter: Int = 0
+
+    Button(
+        onClick = {
+            counter += 1
+        }) {
+            Text(text="This button has been clicked $counter times.")
+        }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ComposeIntroduction2024Theme {
-        Greeting("Android")
-    }
-}
